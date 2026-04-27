@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(128, 69, 222);
+    color: white;
+}
+
+header {
+    padding: 10px;
+    background-color: black;
+}
+
+#div-table {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    height: 70vh;
+    width: 20vw;
+}
+
+#row-mes {
+    background-color: black;
+    height: 8vh;
+}
+
+table, table tr th {
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+table tbody tr {
+    height: 6vh;
+}
+
+table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.342);
+    cursor: pointer;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
