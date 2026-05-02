@@ -15,7 +15,7 @@ header {
 }
 
 #div-table {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,9 +31,13 @@ table {
     height: 8vh;
 }
 
-table, table tr th {
+table, table tr th, table tr td {
     border: 1px solid white;
     border-collapse: collapse;
+}
+
+table tr td, table tr th {
+    text-align: center;
 }
 
 table tbody tr {

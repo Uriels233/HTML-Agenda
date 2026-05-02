@@ -1,11 +1,26 @@
-const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", 
-             "Julho", "Agosto", "Setembro","Outubro", "Novembro", "Dezembro"
-            ];
+const meses = [
+  "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+  "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+];
 
-function atribuirDiasMes(mes)
+function criarMeses(meses) 
 {
-    for (let mes of meses)
+    const tbody = document.querySelector("#div-table table tbody");
+
+    for (const mes of meses) 
     {
-        if (mes=="Janeiro" || mes=="Março" || mes=="")
+        const linha = document.createElement("tr");
+        const dadoLinha = document.createElement("td");
+
+        dadoLinha.textContent = mes;
+
+        linha.appendChild(dadoLinha);
+        tbody.appendChild(linha);
     }
 }
+
+function criarCalendario(numeroMes) {}
+
+function abrirMes(linha, numeroMes) {}
+
+criarMeses(meses);
