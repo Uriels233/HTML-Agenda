@@ -19,8 +19,10 @@ function criarMeses(meses)
     }
 }
 
-function criarCalendario(numeroMes) {}
+function criarCalendario(numeroMes) 
+{}
 
-function abrirMes(linha, numeroMes) {}
+function abrirMes(linha, numeroMes) 
+{}
 
 criarMeses(meses);
