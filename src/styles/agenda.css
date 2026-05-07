@@ -5,8 +5,6 @@
 }
 
 body {
-    border: 2px solid green;
-
     background-color: rgb(48, 13, 240);
 
     min-height: 100vh;
@@ -17,29 +15,48 @@ body {
 }
 
 .agenda {
-    border: 2px solid blue;
+    width: 400px;
+}
+
+.agenda header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgb(8, 227, 143);
+    color: rgb(255, 255, 255);
+
+    height: 100px;
+    text-align: center;
 }
 
 .agenda header h1 {
-    background-color: rgb(8, 227, 143);
-    color: rgb(255, 255, 255);
-    padding: 20px;
+    font-size: 40px;
 }
 
 .agenda-table {
-    border: 2px solid red;
+    border: 2px solid black;
     min-height: calc(100% - 77px);
-    min-width: 100%
+    min-width: 100%;
+
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .agenda-table thead tr th {
-    border: 2px solid purple;
     background-color: rgb(255, 247, 232);
-    padding: 10px;
-
+    height: 80px;
     font-size: 20px;
 }
 
-.agenda-table tbody {
-    border: 100px solid red;
+.agenda-table tbody tr td {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+.agenda-table tbody tr td:hover {
+    background-color: rgba(240, 248, 255, 0.449);
+    cursor: pointer;
 }
