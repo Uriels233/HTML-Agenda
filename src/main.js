@@ -5,7 +5,7 @@ const meses = [
 
 function criarMeses(meses) 
 {
-    const tbody = document.querySelector("#div-table table tbody");
+    const tbody = document.querySelector(".agenda table tbody");
 
     for (const mes of meses) 
     {
