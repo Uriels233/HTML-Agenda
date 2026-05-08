@@ -10,22 +10,46 @@
 
     <main class="agenda">
         <header>
-            <h1>Agenda - 2026</h1>
+            <div class="div-title">
+                <h1>Agenda - 2026</h1>
+            </div>
+            <div class="div-title-mes">
+                <h2>Mês</h2>
+            </div>
         </header>
 
-        <table class="agenda-table">
-            <thead>
-                <tr><th>Mês</th></tr>
-            </thead>
-            <tbody>
-                <tr><td class="mes" data-mes="0">Janeiro</td></tr>
-                <tr><td class="mes" data-mes="1">Fevereiro</td></tr>
-                <tr><td class="mes" data-mes="2">Março</td></tr>
-                <tr><td class="mes" data-mes="3">Abril</td></tr>
-                <tr><td class="mes" data-mes="4">Maio</td></tr>
-                <tr><td class="mes" data-mes="5">Junho</td></tr>
-            </tbody>
-        </table>
+        <ul class="lista-meses">
+            <li class="item-mes">
+                <button class="mes" data-mes="0">Janeiro</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="1">Fevereiro</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="2">Março</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="3">Abril</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="4">Maio</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="5">Junho</button>
+                <table class="calendario"></table>
+            </li>
+        </ul>
+
     </main>    
         
     <script type="module" src="/src/main.js"></script>
