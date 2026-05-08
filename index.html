@@ -7,31 +7,52 @@
     <title>Agenda</title>
 </head>
 <body>
-    <header>
-        <h1>Agenda - 2026</h1>
-    </header>
 
-    <main>
-        <div id="div-table">
-            <table>
-                <thead>
-                    <tr id="row-mes"><th>Mês</th></tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-        </div>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <p><strong>Agenda+</strong></p>
-            <p>Seu organizador diário para tarefas, compromissos e metas.</p>
-            <p>&copy; 2026</p>
-        </div>
-    </footer>
+    <main class="agenda">
+        <header>
+            <div class="div-title">
+                <h1>Agenda - 2026</h1>
+            </div>
+            <div class="div-title-mes">
+                <h2>Mês</h2>
+            </div>
+        </header>
 
+        <ul class="lista-meses">
+            <li class="item-mes">
+                <button class="mes" data-mes="0">Janeiro</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="1">Fevereiro</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="2">Março</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="3">Abril</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="4">Maio</button>
+                <table class="calendario"></table>
+            </li>
+
+            <li class="item-mes">
+                <button class="mes" data-mes="5">Junho</button>
+                <table class="calendario"></table>
+            </li>
+        </ul>
+
+    </main>    
+        
     <script type="module" src="/src/main.js"></script>
+    
 </body>
 </html>

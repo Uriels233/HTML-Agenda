@@ -5,53 +5,58 @@
 }
 
 body {
-    background-color: rgb(128, 69, 222);
-    color: white;
-}
+    background-color: rgb(48, 13, 240);
 
-header {
-    padding: 10px;
-    background-color: black;
-}
-
-#div-table {
     min-height: 100vh;
     display: flex;
     justify-content: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.agenda {
+    width: 400px;
+}
+
+.agenda header {
+    display: flex;
+    justify-content: center;
     align-items: center;
+
+    background-color: rgb(8, 227, 143);
+    color: rgb(255, 255, 255);
+
+    height: 100px;
+    text-align: center;
 }
 
-table {
-    height: 70vh;
-    width: 20vw;
+.agenda header h1 {
+    font-size: 40px;
 }
 
-#row-mes {
-    background-color: black;
-    height: 8vh;
-}
+.agenda-table {
+    border: 2px solid black;
+    min-height: calc(100% - 77px);
+    min-width: 100%;
 
-table, table tr th, table tr td {
-    border: 1px solid white;
     border-collapse: collapse;
+    border-spacing: 0;
 }
 
-table tr td, table tr th {
+.agenda-table thead tr th {
+    background-color: rgb(255, 247, 232);
+    height: 80px;
+    font-size: 20px;
+}
+
+.agenda-table tbody tr td {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: white;
     text-align: center;
+    font-weight: bold;
 }
 
-table tbody tr {
-    height: 6vh;
-}
-
-table tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.342);
+.agenda-table tbody tr td:hover {
+    background-color: rgba(240, 248, 255, 0.449);
     cursor: pointer;
-}
-
-footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 10px;
 }
