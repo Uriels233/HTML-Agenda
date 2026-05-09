@@ -1,83 +1,151 @@
-const meses = [
-  "Janeiro", "Fevereiro", "Março", 
-  "Abril",   "Maio",      "Junho", 
-];
+const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"];
 
-const diasDaSemana = ["D", "S", "T", "Q", "Q", "S", "S"];
+const tarefas = [];
 
-const tdMeses = document.querySelectorAll(".mes");
+let mesAtual = null;
+let diaAtual = null;
 
-tdMeses.forEach((td) => {
-    td.addEventListener('click', () => {
-        const dateMes = Number(td.getAttribute("data-mes"));
+const telaMeses      = document.getElementById("tela-meses");
+const telaDias       = document.getElementById("tela-dias");
+const telaDia        = document.getElementById("tela-dia");
+const telaFormulario = document.getElementById("tela-formulario");
 
-        criarCalendario(td, dateMes);
+const listaMeses     = document.getElementById("lista-meses");
+const listaDias      = document.getElementById("lista-dias");
+const horarios       = document.getElementById("horarios");
+
+const tituloMes      = document.getElementById("titulo-mes");
+const tituloDia      = document.getElementById("titulo-dia");
+
+function mostrarTela(tela) 
+{
+    telaMeses.classList.add("escondido");
+    telaDias.classList.add("escondido");
+    telaDia.classList.add("escondido");
+    telaFormulario.classList.add("escondido");
+
+    tela.classList.remove("escondido");
+}
+
+function carregarMeses() 
+{
+    listaMeses.innerHTML = "";
+
+    meses.forEach((mes, indice) => {
+        const botao = document.createElement("button");
+        botao.textContent = mes;
+
+        botao.addEventListener("click", function () {
+            mesAtual = indice + 1;
+            carregarDias();
+
+            mostrarTela(telaDias);
+        });
+
+        listaMeses.appendChild(botao);
     });
+}
+
+function carregarDias() 
+{
+    listaDias.innerHTML = "";
+    tituloMes.textContent = meses[mesAtual - 1];
+
+    const quantidadeDias = new Date(2026, mesAtual, 0).getDate();
+
+    for (let i = 1; i <= quantidadeDias; i++) 
+    {
+        const botao = document.createElement("button");
+        botao.textContent = i;
+
+        const temEvento = tarefas.some(function (tarefa) {
+            return tarefa.mes === mesAtual && tarefa.dia === i;
+        });
+
+        if (temEvento)
+            botao.classList.add("dia-com-evento");
+
+        botao.addEventListener("click", function () {
+            diaAtual = i;
+            carregarHorarios();
+            mostrarTela(telaDia);
+        });
+
+        listaDias.appendChild(botao);
+    }
+}
+
+function carregarHorarios() 
+{
+    horarios.innerHTML = "";
+    tituloDia.textContent = "Dia " + diaAtual;
+
+    for (let i = 0; i < 24; i++) 
+    {
+        const bloco = document.createElement("div");
+        bloco.classList.add("horario");
+
+        let textoHora = i < 10 ? "0" + i : i;
+        bloco.textContent = textoHora + ":00";
+
+        tarefas.forEach(function (tarefa) {
+            if (
+                tarefa.mes === mesAtual &&
+                tarefa.dia === diaAtual &&
+                parseInt(tarefa.inicio.split(":")[0]) === i
+            ) {
+                const evento = document.createElement("div");
+                evento.classList.add("evento");
+                evento.textContent = tarefa.inicio + " - " + tarefa.titulo;
+                bloco.appendChild(evento);
+            }
+        });
+
+        horarios.appendChild(bloco);
+    }
+}
+
+document.getElementById("voltar-meses").addEventListener("click", function () {
+    mostrarTela(telaMeses);
 });
 
-function criarCalendario(elementoMes, numeroMes) 
-{
-    const calendario = document.querySelector(".div-table-mes");
+document.getElementById("voltar-dias").addEventListener("click", function () {
+    mostrarTela(telaDias);
+});
 
-    if (calendario)
-    {
-        calendario.remove();
-        return;
-    }
+document.getElementById("voltar-dia").addEventListener("click", function () {
+    mostrarTela(telaDia);
+});
 
-    const qtdDiasMes = new Date(2026, numeroMes + 1, 0).getDate();
+document.getElementById("abrir-formulario").addEventListener("click", function () {
+    mostrarTela(telaFormulario);
+});
 
-    const divTable = document.createElement("div");
-    divTable.classList.add("div-table-mes");
+document.getElementById("formulario").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const table = document.createElement("table");
+    const titulo = document.getElementById("titulo").value;
+    const local  = document.getElementById("local").value;
+    const inicio = document.getElementById("inicio").value;
+    const fim    = document.getElementById("fim").value;
+    const obs    = document.getElementById("obs").value;
 
-    const thead = document.createElement("thead");
-    const tbody = document.createElement("tbody");
-    
-    let tr = document.createElement("tr");
-
-    diasDaSemana.forEach((dia) => {
-        const th = document.createElement("th");
-        th.textContent = dia;
-
-        tr.appendChild(th);
+    tarefas.push({
+        mes: mesAtual,
+        dia: diaAtual,
+        titulo: titulo,
+        local: local,
+        inicio: inicio,
+        fim: fim,
+        obs: obs
     });
 
-    thead.appendChild(tr);
-    table.appendChild(thead);
+    document.getElementById("formulario").reset();
 
-    tr = document.createElement("tr");
+    carregarDias();
+    carregarHorarios();
 
-    for (let i=1; i<=qtdDiasMes; i++)
-    {
-        if ((i-1) % 7 === 0 && i !== 1) 
-        {
-            tbody.appendChild(tr);
-            tr = document.createElement("tr");
-        }      
-        
-        const td = document.createElement("td");
-        td.textContent = i;
-        tr.appendChild(td);
-    }
+    mostrarTela(telaDia);
+});
 
-    tbody.appendChild(tr);
-
-    table.appendChild(tbody);
-
-    divTable.appendChild(table);
-
-    const trMes = elementoMes.parentElement;
-
-    const trCalendario = document.createElement("tr");
-    trCalendario.classList.add("linha-calendario");
-
-    const tdCalendario = document.createElement("td");
-    tdCalendario.colSpan = 1;
-
-    tdCalendario.appendChild(divTable);
-    trCalendario.appendChild(tdCalendario);
-
-    trMes.insertAdjacentElement("afterend", trCalendario);
-}
+carregarMeses();
