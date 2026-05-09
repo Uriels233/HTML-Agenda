@@ -1,62 +1,72 @@
-* {
+body {
     box-sizing: border-box;
+    margin: 0;
     padding: 0;
+    
+    font-family: Arial, sans-serif;
+    background: #00ffd5;
+}
+
+.app {
+    width: 320px;
+    min-height: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.escondido {
+    display: none;
+}
+
+header h1, header h2, header p {
+    text-align: center;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+#lista-dias button {
     margin: 0;
 }
 
-body {
-    background-color: rgb(48, 13, 240);
-
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-
-    font-family: Arial, Helvetica, sans-serif;
+#lista-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
 }
 
-.agenda {
-    width: 400px;
+#lista-dias button {
+    margin: 0;
 }
 
-.agenda header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: rgb(8, 227, 143);
-    color: rgb(255, 255, 255);
-
-    height: 100px;
-    text-align: center;
+.dia-com-evento {
+    background: #d9f0ff;
 }
 
-.agenda header h1 {
-    font-size: 40px;
+.horario {
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 4px;
+    font-size: 14px;
 }
 
-.agenda-table {
-    border: 2px solid black;
-    min-height: calc(100% - 77px);
-    min-width: 100%;
-
-    border-collapse: collapse;
-    border-spacing: 0;
+.evento {
+    margin-top: 5px;
+    padding: 5px;
+    background: #f4f4f4;
+    border-left: 4px solid #666;
 }
 
-.agenda-table thead tr th {
-    background-color: rgb(255, 247, 232);
-    height: 80px;
-    font-size: 20px;
-}
-
-.agenda-table tbody tr td {
-    border: 2px solid rgb(0, 0, 0);
-    background-color: white;
-    text-align: center;
-    font-weight: bold;
-}
-
-.agenda-table tbody tr td:hover {
-    background-color: rgba(240, 248, 255, 0.449);
-    cursor: pointer;
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
 }
